@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace UICanvas
+{
+	public class Canvas : INotifyPropertyChanged
+	{
+		public string Title
+		{
+			get { return _Title; }
+			set { _Title = value; NotifyPropertyChanged("Title"); }
+		}
+		private string _Title;
+
+		public ObservableCollection<Screen> Screens
+		{
+			get { return _Screens; }
+			set { _Screens = value; NotifyPropertyChanged("Screens"); }
+		}
+		private ObservableCollection<Screen> _Screens;
+
+		private static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings()
+			{
+				Converters = new[] { new InkStrokeConverter() }
+			};
+
+		public void SaveToFile(string fileName)
+		{
+			if (string.IsNullOrEmpty(fileName)) { throw new ArgumentException("fileName should be a valid path"); }
+			System.IO.File.WriteAllText(fileName, JsonConvert.SerializeObject(this, SerializationSettings));
+		}
+		public static Canvas FromFile(string fileName)
+		{
+			if (string.IsNullOrEmpty(fileName) || !System.IO.File.Exists(fileName)) { throw new ArgumentException("fileName should be a valid path"); }
+			return JsonConvert.DeserializeObject<Canvas>(System.IO.File.ReadAllText(fileName), SerializationSettings);
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected void NotifyPropertyChanged(string propertyName)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+}
