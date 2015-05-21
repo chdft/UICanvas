@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="InkStrokeConverter.cs" />
     <Compile Include="NotNullOrEmptyConverter.cs" />
+    <Compile Include="PositionSubtractionConverter.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ScreenControl.xaml.cs">
       <DependentUpon>ScreenControl.xaml</DependentUpon>

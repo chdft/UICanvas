@@ -47,29 +47,12 @@ namespace UICanvas
 		}
 		private int _Width;
 
-		public int XOffset
+		public Point Position
 		{
-			get { return _XOffset; }
-			set { _XOffset = value; NotifyPropertyChanged("XOffset"); NotifyPropertyChanged("LeftOffset"); }
+			get { return _Position; }
+			set { _Position = value; NotifyPropertyChanged("Position"); }
 		}
-		private int _XOffset;
-
-		public int YOffset
-		{
-			get { return _YOffset; }
-			set { _YOffset = value; NotifyPropertyChanged("YOffset"); NotifyPropertyChanged("TopOffset"); }
-		}
-		private int _YOffset;
-
-		public int TopOffset
-		{
-			get { return YOffset + Height / 2; }
-		}
-
-		public int LeftOffset
-		{
-			get { return XOffset + Width / 2; }
-		}
+		private Point _Position;
 
 		public System.Windows.Ink.StrokeCollection ContentStrokes
 		{

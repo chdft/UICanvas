@@ -44,7 +44,8 @@
 					   MinWidth="0"
 					   MinHeight="0">
 			</InkCanvas>
-			<!--<ItemsControl Grid.Row="1" ItemsSource="{Binding ElementName=Control, Path=Screen.Actions}">
+			<ItemsControl Grid.Row="1"
+						  ItemsSource="{Binding ElementName=Control, Path=Screen.Actions}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<Canvas />
@@ -55,21 +56,15 @@
 						<Path Stroke="#FFCB1010"
 							  StrokeThickness="7">
 							<Path.Data>
-								<LineGeometry>
-									<LineGeometry.StartPoint>
-										<Point X="{Binding ElementName=Control, Path=Screen.XOffset}"
-											   Y="{Binding ElementName=Control, Path=Screen.YOffset}" />
-									</LineGeometry.StartPoint>
-									<LineGeometry.EndPoint>
-										<Point X="{Binding Path=Target.XOffset}"
-											   Y="{Binding Path=Target.YOffset}" />
-									</LineGeometry.EndPoint>
-								</LineGeometry>
+								<!--<LineGeometry StartPoint="{Binding Path=Target.Position}"
+											  EndPoint="{Binding ElementName=Control, Path=Screen.Position}" />-->
+								<LineGeometry StartPoint="0,0"
+											  EndPoint="{Binding Target.Position}" />
 							</Path.Data>
 						</Path>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
-			</ItemsControl>-->
+			</ItemsControl>
 			<Grid Grid.Row="2">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />

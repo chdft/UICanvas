@@ -33,16 +33,14 @@ namespace UICanvas
 			{
 				Width = 186,
 				Height = 186,
-				XOffset = 100,
-				YOffset = 10,
+				Position = new Point(100, 10),
 				Title = "startup screen"
 			};
 			Screen b = new Screen()
 			{
 				Width = 186,
 				Height = 200,
-				XOffset = 350,
-				YOffset = 32,
+				Position = new Point(350, 32),
 				Title = "screen1",
 				Actions = new System.Collections.ObjectModel.ObservableCollection<Action>()
 			};

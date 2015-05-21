@@ -12,9 +12,9 @@
 		<ItemsControl.Resources>
 			<Style TargetType="ContentPresenter">
 				<Setter Property="Canvas.Top"
-						Value="{Binding Path=YOffset}" />
+						Value="{Binding Path=Position.Y}" />
 				<Setter Property="Canvas.Left"
-						Value="{Binding Path=XOffset}" />
+						Value="{Binding Path=Position.X}" />
 			</Style>
 		</ItemsControl.Resources>
 		<ItemsControl.ItemsPanel>

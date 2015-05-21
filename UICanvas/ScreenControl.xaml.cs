@@ -51,25 +51,14 @@ namespace UICanvas
 		private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
 		{
 			ScreenControl item = this.DataContext as ScreenControl;
-
 			if (item != null && item.Screen != null)
 			{
-				if (item.Screen.YOffset + (int)e.VerticalChange >= 0)
-				{
-					item.Screen.YOffset += (int)e.VerticalChange;
-				}
-				else
-				{
-					item.Screen.YOffset = 0;
-				}
-				if (item.Screen.XOffset + (int)e.HorizontalChange >= 0)
-				{
-					item.Screen.XOffset += (int)e.HorizontalChange;
-				}
-				else
-				{
-					item.Screen.XOffset = 0;
-				}
+				Point p = item.Screen.Position;
+				p.X += e.HorizontalChange;
+				p.Y += e.VerticalChange;
+				if (p.X < 0) { p.X = 0; }
+				if (p.Y < 0) { p.Y = 0; }
+				item.Screen.Position = p;
 			}
 		}
 	}
