@@ -8,24 +8,58 @@
 			 mc:Ignorable="d"
 			 d:DesignHeight="300"
 			 d:DesignWidth="300">
-	<ItemsControl ItemsSource="{Binding ElementName=Control, Path=Screens}">
-		<ItemsControl.Resources>
-			<Style TargetType="ContentPresenter">
-				<Setter Property="Canvas.Top"
-						Value="{Binding Path=Position.Y}" />
-				<Setter Property="Canvas.Left"
-						Value="{Binding Path=Position.X}" />
-			</Style>
-		</ItemsControl.Resources>
-		<ItemsControl.ItemsPanel>
-			<ItemsPanelTemplate>
-				<Canvas Background="#FF969696"></Canvas>
-			</ItemsPanelTemplate>
-		</ItemsControl.ItemsPanel>
-		<ItemsControl.ItemTemplate>
-			<DataTemplate>
-				<local:ScreenControl Screen="{Binding}"></local:ScreenControl>
-			</DataTemplate>
-		</ItemsControl.ItemTemplate>
-	</ItemsControl>
+	<Grid>
+		<!-- Screens -->
+		<ItemsControl ItemsSource="{Binding ElementName=Control, Path=Screens}">
+			<ItemsControl.Resources>
+				<Style TargetType="ContentPresenter">
+					<Setter Property="Canvas.Top"
+							Value="{Binding Path=Position.Y}" />
+					<Setter Property="Canvas.Left"
+							Value="{Binding Path=Position.X}" />
+				</Style>
+			</ItemsControl.Resources>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas Background="#FF969696"></Canvas>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<local:ScreenControl Screen="{Binding}"
+										 StylusDown="ScreenControl_StylusDown"></local:ScreenControl>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		<!-- Actions -->
+		<ItemsControl ItemsSource="{Binding ElementName=Control, Path=Actions}"
+					  Opacity="0.35">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Path Stroke="#FFCB1010"
+						  StrokeThickness="7">
+						<Path.Data>
+							<LineGeometry StartPoint="{Binding Origin.Position}"
+										  EndPoint="{Binding Target.Position}">
+								<LineGeometry.Transform>
+									<TransformGroup>
+										<ScaleTransform />
+										<SkewTransform />
+										<RotateTransform />
+										<TranslateTransform X="{Binding Position.X}"
+															Y="{Binding Position.Y}" />
+									</TransformGroup>
+								</LineGeometry.Transform>
+							</LineGeometry>
+						</Path.Data>
+					</Path>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
 </UserControl>

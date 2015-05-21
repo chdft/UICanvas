@@ -27,7 +27,8 @@ namespace UICanvas
 			InitializeComponent();
 			Canvas = new UICanvas.Canvas()
 			{
-				Screens = new System.Collections.ObjectModel.ObservableCollection<Screen>()
+				Screens = new System.Collections.ObjectModel.ObservableCollection<Screen>(),
+				Actions = new System.Collections.ObjectModel.ObservableCollection<Action>()
 			};
 			Screen a = new Screen()
 			{
@@ -42,11 +43,12 @@ namespace UICanvas
 				Height = 200,
 				Position = new Point(350, 32),
 				Title = "screen1",
-				Actions = new System.Collections.ObjectModel.ObservableCollection<Action>()
 			};
-			b.Actions.Add(new Action()
+			Canvas.Actions.Add(new Action()
 			{
-				Target = a
+				Origin = a,
+				Target = b,
+				Position = new Point(20, 40)
 			});
 			Canvas.Screens.Add(a);
 			Canvas.Screens.Add(b);

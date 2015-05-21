@@ -25,6 +25,13 @@ namespace UICanvas
 		}
 		private ObservableCollection<Screen> _Screens;
 
+		public ObservableCollection<Action> Actions
+		{
+			get { return _Actions; }
+			set { _Actions = value; NotifyPropertyChanged("Actions"); }
+		}
+		private ObservableCollection<Action> _Actions;
+
 		private static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings()
 			{
 				Converters = new[] { new InkStrokeConverter() }

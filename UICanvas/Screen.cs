@@ -26,13 +26,6 @@ namespace UICanvas
 			}
 		}
 
-		public ObservableCollection<Action> Actions
-		{
-			get { return _Actions; }
-			set { _Actions = value; NotifyPropertyChanged("Actions"); }
-		}
-		private ObservableCollection<Action> _Actions;
-
 		public int Height
 		{
 			get { return _Height; }

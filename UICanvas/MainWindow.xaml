@@ -33,6 +33,7 @@
 		</ToolBar>
 		<local:CanvasControl x:Name="ScreenCanvas"
 							 Grid.Row="1"
-							 Screens="{Binding ElementName=Window, Path=Canvas.Screens}"></local:CanvasControl>
+							 Screens="{Binding ElementName=Window, Path=Canvas.Screens}"
+							 Actions="{Binding ElementName=Window, Path=Canvas.Actions}"></local:CanvasControl>
 	</Grid>
 </Window>
