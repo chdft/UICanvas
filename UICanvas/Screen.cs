@@ -51,6 +51,17 @@ namespace UICanvas
 		private Point _Position;
 
 		/// <summary>
+		/// position of the center of this screen relative to the top-left corner of the canvas
+		/// </summary>
+		public Point CenterPosition
+		{
+			get
+			{
+				return new Point(Position.X + Width / 2, Position.Y + Height / 2);
+			}
+		}
+
+		/// <summary>
 		/// Collection of Strokes forming the content of this screen
 		/// </summary>
 		public System.Windows.Ink.StrokeCollection ContentStrokes

@@ -46,7 +46,7 @@
 						  StrokeThickness="7">
 						<Path.Data>
 							<LineGeometry StartPoint="{Binding AbsolutePosition}"
-										  EndPoint="{Binding Target.Position}">
+										  EndPoint="{Binding Target.CenterPosition}">
 							</LineGeometry>
 						</Path.Data>
 					</Path>
