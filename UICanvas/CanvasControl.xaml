@@ -27,7 +27,14 @@
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<local:ScreenControl Screen="{Binding}"
-										 AddAction="ScreenControl_AddAction"></local:ScreenControl>
+										 AddAction="ScreenControl_AddAction">
+						<local:ScreenControl.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Remove Screen"
+										  Click="MenuItemRemoveScreen_Click" />
+							</ContextMenu>
+						</local:ScreenControl.ContextMenu>
+					</local:ScreenControl>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>

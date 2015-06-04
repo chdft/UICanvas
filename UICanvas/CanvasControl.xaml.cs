@@ -117,6 +117,19 @@ namespace UICanvas
 			}
 		}
 
+		private void MenuItemRemoveScreen_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Screen screen = menuItem.DataContext as Screen;
+				if (screen != null && Screens.Contains(screen))
+				{
+					Screens.Remove(screen);
+				}
+			}
+		}
+
 		/*private void ScreenControl_StylusDown(object sender, StylusDownEventArgs e)
 		{
 			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)

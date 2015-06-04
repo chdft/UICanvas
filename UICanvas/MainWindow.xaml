@@ -14,7 +14,7 @@
 			<RowDefinition Height="Auto"></RowDefinition>
 			<RowDefinition></RowDefinition>
 		</Grid.RowDefinitions>
-		<ToolBar>
+		<ToolBar Panel.ZIndex="100">
 			<Button x:Name="ToolbarSave"
 					Content="Save"
 					Click="ToolbarSave_Click"
@@ -27,9 +27,17 @@
 					Click="ToolbarOpen_Click" />
 			<Button x:Name="ToolbarAddScreen"
 					Content="Add Screen"
-					Click="ToolbarAddScreen_Click" />
+					Click="ToolbarAddScreen_Click"
+					Margin="7,0,0,0" />
 			<TextBox Text="{Binding ElementName=Window, Path=Canvas.Title}"
-					 Width="160" />
+					 Width="160"
+					 BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" />
+			<Slider x:Name="ActionOpacitySlider"
+					Maximum="1"
+					LargeChange="0.3"
+					Width="100"
+					Value="{Binding ElementName=ScreenCanvas, Path=ActionOpacity}"
+					Margin="7,0,0,0" />
 		</ToolBar>
 		<local:CanvasControl x:Name="ScreenCanvas"
 							 Grid.Row="1"
