@@ -29,14 +29,14 @@ namespace UICanvas
 		public int Height
 		{
 			get { return _Height; }
-			set { _Height = value; NotifyPropertyChanged("Height"); }
+			set { _Height = value; NotifyPropertyChanged("Height"); NotifyPropertyChanged("CenterPosition"); }
 		}
 		private int _Height;
 
 		public int Width
 		{
 			get { return _Width; }
-			set { _Width = value; NotifyPropertyChanged("Width"); }
+			set { _Width = value; NotifyPropertyChanged("Width"); NotifyPropertyChanged("CenterPosition"); }
 		}
 		private int _Width;
 
@@ -46,7 +46,7 @@ namespace UICanvas
 		public Point Position
 		{
 			get { return _Position; }
-			set { _Position = value; NotifyPropertyChanged("Position"); }
+			set { _Position = value; NotifyPropertyChanged("Position"); NotifyPropertyChanged("CenterPosition"); }
 		}
 		private Point _Position;
 

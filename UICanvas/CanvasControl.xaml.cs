@@ -42,6 +42,14 @@ namespace UICanvas
 		}
 		public static readonly DependencyProperty ActionsProperty =
 			DependencyProperty.Register("Actions", typeof(ObservableCollection<Action>), typeof(CanvasControl), new PropertyMetadata());
+		
+		public double ActionOpacity
+		{
+			get { return (double)GetValue(ActionOpacityProperty); }
+			set { SetValue(ActionOpacityProperty, value); }
+		}
+		public static readonly DependencyProperty ActionOpacityProperty =
+			DependencyProperty.Register("ActionOpacity", typeof(double), typeof(CanvasControl), new PropertyMetadata(0.35));
 
 		public Action PendingAction
 		{
@@ -59,14 +67,14 @@ namespace UICanvas
 			}
 		}
 
-		private void UIAddAction(Screen screen)
+		private void UIAddAction(Screen screen, Point position)
 		{
 			if (PendingAction == null)
 			{
 				PendingAction = new Action()
 				{
 					Origin = screen,
-					Position = new Point(screen.Width / 2, screen.Height / 2)
+					Position = position
 				};
 			}
 			else
@@ -88,14 +96,35 @@ namespace UICanvas
 			}
 		}
 
-		private void ScreenControl_StylusDown(object sender, StylusDownEventArgs e)
+		private void ScreenControl_AddAction(object sender, ScreenControl.AddActionEventArgs e)
+		{
+			if (e.Source != null)
+			{
+				UIAddAction(e.Source, e.Position);
+			}
+		}
+
+		private void MenuItemRemoveAction_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null && Actions.Contains(action))
+				{
+					Actions.Remove(action);
+				}
+			}
+		}
+
+		/*private void ScreenControl_StylusDown(object sender, StylusDownEventArgs e)
 		{
 			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)
 			{
 				ScreenControl originControl = sender as ScreenControl;
 				if (originControl != null && originControl.Screen != null)
 				{
-					UIAddAction(originControl.Screen);
+					UIAddAction(originControl.Screen, e.GetPosition(originControl));
 				}
 			}
 		}
@@ -105,8 +134,8 @@ namespace UICanvas
 			ScreenControl originControl = sender as ScreenControl;
 			if (originControl != null && originControl.Screen != null)
 			{
-				UIAddAction(originControl.Screen);
+				UIAddAction(originControl.Screen, e.GetPosition(originControl));
 			}
-		}
+		}*/
 	}
 }

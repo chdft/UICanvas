@@ -27,7 +27,8 @@
 	<Border BorderThickness="5"
 			CornerRadius="3"
 			Background="#FF4B4B4B"
-			BorderBrush="#FF4B4B4B">
+			BorderBrush="#FF4B4B4B"
+			Margin="-5,-34,-5,-5">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
@@ -36,15 +37,19 @@
 			</Grid.RowDefinitions>
 			<TextBox Grid.Row="0"
 					 Text="{Binding Screen.Title, ElementName=Control}"
-					 Margin="0,0,0,7" />
-			<InkCanvas Grid.Row="1"
+					 Margin="0,0,0,7"
+					 Height="22" />
+			<InkCanvas x:Name="ScreenCanvas"
+					   Grid.Row="1"
 					   Strokes="{Binding Screen.ContentStrokes, ElementName=Control}"
 					   Height="{Binding Screen.Height, ElementName=Control}"
 					   Width="{Binding Screen.Width, ElementName=Control}"
 					   MinWidth="0"
 					   MinHeight="0"
 					   HorizontalAlignment="Left"
-					   VerticalAlignment="Top">
+					   VerticalAlignment="Top"
+					   StylusDown="Screen_StylusDown"
+					   MouseRightButtonUp="Screen_MouseRightButtonUp">
 			</InkCanvas>
 			<Grid Grid.Row="2">
 				<Grid.ColumnDefinitions>

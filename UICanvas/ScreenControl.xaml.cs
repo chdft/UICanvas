@@ -39,7 +39,49 @@ namespace UICanvas
 		public static readonly DependencyProperty ScreenProperty =
 			DependencyProperty.Register("Screen", typeof(Screen), typeof(ScreenControl), new PropertyMetadata());
 
+		public delegate void AddActionHandler(object sender, AddActionEventArgs e);
+		public event AddActionHandler AddAction;
 
+		protected void OnAddAction(Point position)
+		{
+			if (AddAction != null)
+			{
+				AddAction(this, new AddActionEventArgs(Screen, position));
+			}
+		}
+
+		private void Screen_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			OnAddAction(e.GetPosition(ScreenCanvas));
+		}
+
+		private void Screen_StylusDown(object sender, StylusDownEventArgs e)
+		{
+			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)
+			{
+				OnAddAction(e.GetPosition(ScreenCanvas));
+			}
+		}
+
+		public class AddActionEventArgs : EventArgs
+		{
+			public Screen Source
+			{
+				get { return _Source; }
+			}
+			private readonly Screen _Source;
+
+			public Point Position
+			{
+				get { return _Position; }
+			}
+			private readonly Point _Position;
+			public AddActionEventArgs(Screen source, Point position)
+			{
+				this._Source = source;
+				this._Position = position;
+			}
+		}
 	}
 	public class ScreenControlMoveThumb : Thumb
 	{

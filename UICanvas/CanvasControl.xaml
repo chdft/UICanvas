@@ -27,14 +27,13 @@
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<local:ScreenControl Screen="{Binding}"
-										 StylusDown="ScreenControl_StylusDown"
-										 MouseRightButtonUp="ScreenControl_MouseRightButtonUp"></local:ScreenControl>
+										 AddAction="ScreenControl_AddAction"></local:ScreenControl>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
 		<!-- Actions -->
 		<ItemsControl ItemsSource="{Binding ElementName=Control, Path=Actions}"
-					  Opacity="0.35">
+					  Opacity="{Binding ElementName=Control, Path=ActionOpacity}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<Canvas />
@@ -49,6 +48,25 @@
 										  EndPoint="{Binding Target.CenterPosition}">
 							</LineGeometry>
 						</Path.Data>
+						<Path.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="Remove Action"
+										  Click="MenuItemRemoveAction_Click" />
+								<!--<MenuItem Header="Type">
+									<MenuItem Header="click or tap">
+										<MenuItem.Foreground>
+											<SolidColorBrush Color="Red" />
+										</MenuItem.Foreground>
+									</MenuItem>
+									<MenuItem Header="click"></MenuItem>
+									<MenuItem Header="right click"></MenuItem>
+									<MenuItem Header="double click"></MenuItem>
+									<MenuItem Header="tap"></MenuItem>
+									<MenuItem Header="long tap"></MenuItem>
+									<MenuItem Header="drop"></MenuItem>
+								</MenuItem>-->
+							</ContextMenu>
+						</Path.ContextMenu>
 					</Path>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
