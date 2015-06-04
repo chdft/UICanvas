@@ -34,9 +34,11 @@ namespace UICanvas
 			{
 				Width = 186,
 				Height = 186,
-				Position = new Point(100, 10),
+				Position = new Point(10, 40),
 				Title = "startup screen"
 			};
+			Canvas.Screens.Add(a);
+#if DEBUG
 			Screen b = new Screen()
 			{
 				Width = 186,
@@ -50,8 +52,8 @@ namespace UICanvas
 				Target = b,
 				Position = new Point(20, 40)
 			});
-			Canvas.Screens.Add(a);
 			Canvas.Screens.Add(b);
+#endif
 		}
 
 		public Canvas Canvas
@@ -146,6 +148,7 @@ namespace UICanvas
 				}
 				Canvas.Screens.Add(new Screen()
 				{
+					Position=new Point(10, 40),
 					Width = 200,
 					Height = 200
 				});
