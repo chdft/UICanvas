@@ -29,17 +29,20 @@ namespace UICanvas
 		public int Height
 		{
 			get { return _Height; }
-			set { _Height = value; NotifyPropertyChanged("Height"); NotifyPropertyChanged("TopOffset"); }
+			set { _Height = value; NotifyPropertyChanged("Height"); }
 		}
 		private int _Height;
 
 		public int Width
 		{
 			get { return _Width; }
-			set { _Width = value; NotifyPropertyChanged("Width"); NotifyPropertyChanged("LeftOffset"); }
+			set { _Width = value; NotifyPropertyChanged("Width"); }
 		}
 		private int _Width;
 
+		/// <summary>
+		/// position relative to the top-left corner of the canvas
+		/// </summary>
 		public Point Position
 		{
 			get { return _Position; }
@@ -47,6 +50,9 @@ namespace UICanvas
 		}
 		private Point _Position;
 
+		/// <summary>
+		/// Collection of Strokes forming the content of this screen
+		/// </summary>
 		public System.Windows.Ink.StrokeCollection ContentStrokes
 		{
 			get { return _ContentStrokes; }
@@ -54,6 +60,9 @@ namespace UICanvas
 		}
 		private System.Windows.Ink.StrokeCollection _ContentStrokes;
 
+		/// <summary>
+		/// user defined title
+		/// </summary>
 		public string Title
 		{
 			get { return _Title; }

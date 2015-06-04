@@ -59,6 +59,35 @@ namespace UICanvas
 			}
 		}
 
+		private void UIAddAction(Screen screen)
+		{
+			if (PendingAction == null)
+			{
+				PendingAction = new Action()
+				{
+					Origin = screen,
+					Position = new Point(screen.Width / 2, screen.Height / 2)
+				};
+			}
+			else
+			{
+				if (screen != PendingAction.Origin)
+				{
+					PendingAction.Target = screen;
+					if (Actions == null)
+					{
+						Actions = new ObservableCollection<Action>();
+					}
+					Actions.Add(PendingAction);
+					PendingAction = null;
+				}
+				else
+				{
+					PendingAction = null;
+				}
+			}
+		}
+
 		private void ScreenControl_StylusDown(object sender, StylusDownEventArgs e)
 		{
 			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)
@@ -66,32 +95,17 @@ namespace UICanvas
 				ScreenControl originControl = sender as ScreenControl;
 				if (originControl != null && originControl.Screen != null)
 				{
-					if (PendingAction == null)
-					{
-						PendingAction = new Action()
-						{
-							Origin = originControl.Screen,
-							Position = new Point(Width / 2, Height / 2)
-						};
-					}
-					else
-					{
-						if (originControl.Screen != PendingAction.Origin)
-						{
-							PendingAction.Target = originControl.Screen;
-							if (Actions == null)
-							{
-								Actions = new ObservableCollection<Action>();
-							}
-							Actions.Add(PendingAction);
-							PendingAction = null;
-						}
-						else
-						{
-							PendingAction = null;
-						}
-					}
+					UIAddAction(originControl.Screen);
 				}
+			}
+		}
+
+		private void ScreenControl_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ScreenControl originControl = sender as ScreenControl;
+			if (originControl != null && originControl.Screen != null)
+			{
+				UIAddAction(originControl.Screen);
 			}
 		}
 	}

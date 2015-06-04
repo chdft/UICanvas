@@ -27,7 +27,8 @@
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
 					<local:ScreenControl Screen="{Binding}"
-										 StylusDown="ScreenControl_StylusDown"></local:ScreenControl>
+										 StylusDown="ScreenControl_StylusDown"
+										 MouseRightButtonUp="ScreenControl_MouseRightButtonUp"></local:ScreenControl>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
@@ -44,17 +45,8 @@
 					<Path Stroke="#FFCB1010"
 						  StrokeThickness="7">
 						<Path.Data>
-							<LineGeometry StartPoint="{Binding Origin.Position}"
+							<LineGeometry StartPoint="{Binding AbsolutePosition}"
 										  EndPoint="{Binding Target.Position}">
-								<LineGeometry.Transform>
-									<TransformGroup>
-										<ScaleTransform />
-										<SkewTransform />
-										<RotateTransform />
-										<TranslateTransform X="{Binding Position.X}"
-															Y="{Binding Position.Y}" />
-									</TransformGroup>
-								</LineGeometry.Transform>
 							</LineGeometry>
 						</Path.Data>
 					</Path>
