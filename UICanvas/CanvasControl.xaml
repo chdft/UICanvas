@@ -24,7 +24,7 @@
 			</ItemsControl.Resources>
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
-					<Canvas Background="#FF969696"></Canvas>
+					<Canvas></Canvas>
 				</ItemsPanelTemplate>
 			</ItemsControl.ItemsPanel>
 			<ItemsControl.ItemTemplate>

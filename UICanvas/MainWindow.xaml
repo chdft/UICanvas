@@ -42,6 +42,7 @@
 		<local:CanvasControl x:Name="ScreenCanvas"
 							 Grid.Row="1"
 							 Screens="{Binding ElementName=Window, Path=Canvas.Screens}"
-							 Actions="{Binding ElementName=Window, Path=Canvas.Actions}"></local:CanvasControl>
+							 Actions="{Binding ElementName=Window, Path=Canvas.Actions}"
+							 Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></local:CanvasControl>
 	</Grid>
 </Window>

@@ -4,7 +4,7 @@
 I created this application, because I had quite some trouble showing users (= people who are no developers) how an app will roughly look and behave *before* actually implementing the UI. I guessed, that an application to visualize the behaviour would either take a long time to develop or be hard to use, so I decided to start this project and work on it for one day and see how usable the result was.
 
 ## Further Development
-As soon as there is VS15 with support for Windows 10 Universal Apps, I will try to convert/rewrite this desktop application. Until then, there probably won't be many milestones. But if you have ideas, you are very welcome to implement them and create pull-requests.
+As soon as there is VS15 with support for Windows 10 Universal Apps (and Windows 10), I will try to convert/rewrite this desktop application. Until then, there probably won't be many milestones. But if you have ideas, you are very welcome to implement them and create pull-requests.
 
 ## Helpful Websites
  - [WPF Diagram Designer: Part 1](http://www.codeproject.com/Articles/22952/WPF-Diagram-Designer-Part): how screens can be moved around inside the canvas
