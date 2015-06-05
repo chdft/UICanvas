@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
+    <Compile Include="ActionTypeConverter.cs" />
     <Compile Include="Canvas.cs" />
     <Compile Include="CanvasControl.xaml.cs">
       <DependentUpon>CanvasControl.xaml</DependentUpon>

@@ -130,6 +130,97 @@ namespace UICanvas
 			}
 		}
 
+		private void MenuItemActionTypeClick_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.Click;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeDoubleClick_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.DoubleClick;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeRightClick_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.RightClick;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeDrop_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.Drop;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeTap_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.Tap;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeLongTap_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.LongTap;
+				}
+			}
+		}
+
+		private void MenuItemActionTypeClickOrTap_Click(object sender, RoutedEventArgs e)
+		{
+			MenuItem menuItem = sender as MenuItem;
+			if (menuItem != null)
+			{
+				Action action = menuItem.DataContext as Action;
+				if (action != null)
+				{
+					action.Type = Action.ActionType.ClickOrTap;
+				}
+			}
+		}
+
 		/*private void ScreenControl_StylusDown(object sender, StylusDownEventArgs e)
 		{
 			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)

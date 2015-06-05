@@ -65,6 +65,13 @@ namespace UICanvas
 		}
 		private Point _Position;
 
+		public ActionType Type
+		{
+			get { return _Type; }
+			set { _Type = value; NotifyPropertyChanged("Type"); }
+		}
+		private ActionType _Type;
+
 		public event PropertyChangedEventHandler PropertyChanged;
 		protected void NotifyPropertyChanged(string propertyName)
 		{
@@ -82,5 +89,15 @@ namespace UICanvas
 			}
 		}
 
+		public enum ActionType
+		{
+			ClickOrTap,
+			Click,
+			Tap,
+			DoubleClick,
+			RightClick,
+			LongTap,
+			Drop
+		}
 	}
 }

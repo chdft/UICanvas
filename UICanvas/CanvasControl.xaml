@@ -8,6 +8,9 @@
 			 mc:Ignorable="d"
 			 d:DesignHeight="300"
 			 d:DesignWidth="300">
+	<UserControl.Resources>
+		<local:ActionTypeConverter x:Key="ActionTypeConverter" />
+	</UserControl.Resources>
 	<Grid>
 		<!-- Screens -->
 		<ItemsControl ItemsSource="{Binding ElementName=Control, Path=Screens}">
@@ -48,7 +51,7 @@
 			</ItemsControl.ItemsPanel>
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<Path Stroke="#FFCB1010"
+					<Path Stroke="{Binding Type, Converter={StaticResource ActionTypeConverter}, Mode=OneWay}"
 						  StrokeThickness="7">
 						<Path.Data>
 							<LineGeometry StartPoint="{Binding AbsolutePosition}"
@@ -59,19 +62,22 @@
 							<ContextMenu>
 								<MenuItem Header="Remove Action"
 										  Click="MenuItemRemoveAction_Click" />
-								<!--<MenuItem Header="Type">
-									<MenuItem Header="click or tap">
-										<MenuItem.Foreground>
-											<SolidColorBrush Color="Red" />
-										</MenuItem.Foreground>
-									</MenuItem>
-									<MenuItem Header="click"></MenuItem>
-									<MenuItem Header="right click"></MenuItem>
-									<MenuItem Header="double click"></MenuItem>
-									<MenuItem Header="tap"></MenuItem>
-									<MenuItem Header="long tap"></MenuItem>
-									<MenuItem Header="drop"></MenuItem>
-								</MenuItem>-->
+								<MenuItem Header="Type">
+									<MenuItem Header="click or tap"
+											  Click="MenuItemActionTypeClickOrTap_Click"></MenuItem>
+									<MenuItem Header="click"
+											  Click="MenuItemActionTypeClick_Click"></MenuItem>
+									<MenuItem Header="right click"
+											  Click="MenuItemActionTypeRightClick_Click"></MenuItem>
+									<MenuItem Header="double click"
+											  Click="MenuItemActionTypeDoubleClick_Click"></MenuItem>
+									<MenuItem Header="tap"
+											  Click="MenuItemActionTypeTap_Click"></MenuItem>
+									<MenuItem Header="long tap"
+											  Click="MenuItemActionTypeLongTap_Click"></MenuItem>
+									<MenuItem Header="drop"
+											  Click="MenuItemActionTypeDrop_Click"></MenuItem>
+								</MenuItem>
 							</ContextMenu>
 						</Path.ContextMenu>
 					</Path>
