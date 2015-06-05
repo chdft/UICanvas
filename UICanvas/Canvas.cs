@@ -34,7 +34,11 @@ namespace UICanvas
 
 		private static JsonSerializerSettings SerializationSettings = new JsonSerializerSettings()
 			{
-				Converters = new[] { new InkStrokeConverter() }
+				Converters = new[] { new InkStrokeConverter() },
+				PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All,
+#if DEBUG
+				Formatting = Formatting.Indented
+#endif
 			};
 
 		public void SaveToFile(string fileName)

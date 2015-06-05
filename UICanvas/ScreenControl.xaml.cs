@@ -53,6 +53,7 @@ namespace UICanvas
 		private void Screen_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			OnAddAction(e.GetPosition(ScreenCanvas));
+			e.Handled = true;
 		}
 
 		private void Screen_StylusDown(object sender, StylusDownEventArgs e)
@@ -60,6 +61,7 @@ namespace UICanvas
 			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)
 			{
 				OnAddAction(e.GetPosition(ScreenCanvas));
+				e.Handled = true;
 			}
 		}
 
