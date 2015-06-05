@@ -58,7 +58,7 @@ namespace UICanvas
 
 		private void Screen_StylusDown(object sender, StylusDownEventArgs e)
 		{
-			if (e.StylusDevice.StylusButtons.Count > 0 && e.StylusDevice.StylusButtons[0].StylusButtonState == StylusButtonState.Down)
+			if (e.StylusDevice.StylusButtons.Count > 1 && e.StylusDevice.StylusButtons[1].StylusButtonState == StylusButtonState.Down)
 			{
 				OnAddAction(e.GetPosition(ScreenCanvas));
 				e.Handled = true;
