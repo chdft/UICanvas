@@ -54,9 +54,13 @@
 					<Path Stroke="{Binding Type, Converter={StaticResource ActionTypeConverter}, Mode=OneWay}"
 						  StrokeThickness="7">
 						<Path.Data>
-							<LineGeometry StartPoint="{Binding AbsolutePosition}"
-										  EndPoint="{Binding Target.CenterPosition}">
-							</LineGeometry>
+							<GeometryGroup>
+								<LineGeometry StartPoint="{Binding AbsolutePosition}"
+											  EndPoint="{Binding Target.CenterPosition}" />
+								<EllipseGeometry Center="{Binding AbsolutePosition}"
+												 RadiusX="3.5"
+												 RadiusY="3.5" />
+							</GeometryGroup>
 						</Path.Data>
 						<Path.ContextMenu>
 							<ContextMenu>
